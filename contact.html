@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Harvest Table</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.svg" alt="Harvest Table Logo" class="logo-img">
+            <span class="logo-text">Harvest Table</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Seasonal Menu</a></li>
+            <li><a href="process.html">Our Ethics</a></li>
+            <li><a href="contact.html" class="active">Contact Us</a></li>
+            <li><a href="reservations.html" class="nav-cta">Reserve Table</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Contact Section -->
+<main class="contact-page">
+    <header class="contact-header">
+        <h1>Get in Touch</h1>
+        <p>We'd love to hear from you! Reach out to us through any of the options below.</p>
+    </header>
+
+    <section class="contact-grid">
+        <!-- Visit Us -->
+        <div class="contact-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Visit Us</h3>
+            <address>
+                123 Green Valley Road<br>
+                Sustainable City, CA 12345
+            </address>
+            <p class="hours">
+                <strong>Hours:</strong><br>
+                Mon-Fri: 11am - 9pm<br>
+                Sat-Sun: 10am - 10pm
+            </p>
+        </div>
+
+        <!-- Call Us -->
+        <div class="contact-card">
+            <i class="fas fa-phone"></i>
+            <h3>Call Us</h3>
+            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+            <p><a href="tel:5551234568">Farm Tours: (555) 123-4568</a></p>
+        </div>
+
+        <!-- Email Us -->
+        <div class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <h3>Email Us</h3>
+            <p><a href="mailto:hello@harvesttable.com">hello@harvesttable.com</a></p>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <h2>Send Us a Message</h2>
+        <form class="contact-form" action="#" method="post">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Visit Our Farm</h4>
+            <address>
+                123 Green Valley Road<br>
+                Sustainable City, CA 12345<br>
+                <a href="tel:5551234567">(555) 123-4567</a>
+            </address>
+        </div>
+
+        <div class="footer-section">
+            <h4>Our Commitments</h4>
+            <ul class="footer-links">
+                <li><a href="process.html#sourcing">Ethical Sourcing</a></li>
+                <li><a href="process.html#energy">Renewable Energy</a></li>
+                <li><a href="process.html#waste">Zero-Waste Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h4>Stay Connected</h4>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <p>&copy; 2023 Harvest Table. Designed with ♻️ in California.</p>
+</footer>
+</body>
+</html>
