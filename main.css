@@ -1,5 +1,5 @@
 /* styles/main.css */
-/* Base Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +18,7 @@ body {
     background: #F7F7F2;
 }
 
-/* Root Variables */
+/* Root */
 :root {
     --primary-orange: #FF6B35;
     --primary-green: #4B5842;
