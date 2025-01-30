@@ -1,49 +1,62 @@
-// HOVER CARD SYSTEM (COMPLETE)
-class HoverCardSystem {
-    constructor() {
-        this.menuItems = document.querySelectorAll('.menu-item');
-        this.init();
+// hover-cards.js - Enhanced Version
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.menu-item');
+    let activeCard = null;
+
+    function positionCard(card, item) {
+        const itemRect = item.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const spaceBelow = viewportHeight - itemRect.bottom;
+
+        if (spaceBelow < 300) {
+            card.style.bottom = 'auto';
+            card.style.top = `${-itemRect.height - 20}px`;
+        } else {
+            card.style.top = 'auto';
+            card.style.bottom = '-20px';
+        }
     }
 
-    init() {
-        this.menuItems.forEach(item => {
-            const img = item.querySelector('img');
-            const hoverCard = item.querySelector('.hover-card');
+    function activateCard(item) {
+        const card = item.querySelector('.hover-card');
+        if (!card) return;
 
-            // Calculate dynamic positioning
-            img.addEventListener('load', () => {
-                hoverCard.style.width = `${img.offsetWidth}px`;
-                this.setHoverCardPosition(item);
-            });
+        if (activeCard) activeCard.classList.remove('active');
+        card.classList.add('active');
+        activeCard = card;
+        positionCard(card, item);
+    }
 
-            // Event listeners
-            item.addEventListener('mouseenter', () => this.showHoverCard(item));
-            item.addEventListener('mouseleave', () => this.hideHoverCard(item));
-            window.addEventListener('resize', () => this.setHoverCardPosition(item));
+    menuItems.forEach(item => {
+        const card = item.querySelector('.hover-card');
+
+        item.addEventListener('mouseenter', () => {
+            if (window.matchMedia("(hover: hover)").matches) {
+                activateCard(item);
+            }
         });
-    }
 
-    setHoverCardPosition(item) {
-        const rect = item.getBoundingClientRect();
-        const hoverCard = item.querySelector('.hover-card');
-        hoverCard.style.top = `${rect.top + window.scrollY + rect.height}px`;
-        hoverCard.style.left = `${rect.left}px`;
-    }
+        item.addEventListener('click', (e) => {
+            if (!window.matchMedia("(hover: hover)").matches) {
+                e.preventDefault();
+                activateCard(item);
+            }
+        });
 
-    showHoverCard(item) {
-        const hoverCard = item.querySelector('.hover-card');
-        hoverCard.style.opacity = '1';
-        hoverCard.style.visibility = 'visible';
-        hoverCard.style.transform = 'translateY(-20px)';
-    }
+        window.addEventListener('resize', () => positionCard(card, item));
+        new ResizeObserver(() => positionCard(card, item)).observe(item);
+    });
 
-    hideHoverCard(item) {
-        const hoverCard = item.querySelector('.hover-card');
-        hoverCard.style.opacity = '0';
-        hoverCard.style.visibility = 'hidden';
-        hoverCard.style.transform = 'translateY(0)';
-    }
-}
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.menu-item')) {
+            if (activeCard) activeCard.classList.remove('active');
+            activeCard = null;
+        }
+    });
 
-// Initialize hover cards
-document.addEventListener('DOMContentLoaded', () => new HoverCardSystem());
+    window.addEventListener('scroll', () => {
+        if (activeCard) {
+            positionCard(activeCard, activeCard.parentElement);
+        }
+    }, true);
+});
